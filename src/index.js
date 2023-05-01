@@ -13,11 +13,15 @@ class Timer extends Component {
   }
 
   setStart () {
-    console.log('start')
+    this.setState((state) => ({
+      second: Number(state.second) + 1
+    }));
   }
 
   setPause () {
-    console.log('pause')
+    this.setState((state) => ({
+      second: Number(state.second)
+    }));
   }
 
   render() {
