@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+
 class Timer extends Component {
 
   constructor(props) {
     super(props);
     this.state = {  
       second: '00',
-      min: '00',
+      min: '02',
       interval: null
     }
   }
+
 
   setStart (bool) {
 
@@ -18,22 +20,39 @@ class Timer extends Component {
 
       this.interval = setInterval( () => {
 
-        if (this.state.second === 60) {
+        if (this.state.second === 1 && this.state.min === 0) {
+
+          clearInterval(this.interval);
+          this.interval = null;
 
           this.setState((state) => ({
             second: state.second = '00'
           }));
+
+          this.setState((state) => ({
+            min: state.min = '02'
+          }));
+
+          return 
+
+        } 
+
+        if (this.state.second === 0 || this.state.second === '00') {
+
+          this.setState((state) => ({
+            second: state.second = 59
+          }));
           
           this.setState((state) => ({
-            min: Number(state.min) + 1
+            min: Number(state.min) - 1
           }));
         }
 
         this.setState((state) => ({
-          second: Number(state.second) + 1
+          second: Number(state.second) - 1
         }));
 
-      }, 1000)
+      }, 1000);
 
     } else if (bool === false ) {
 
