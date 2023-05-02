@@ -7,8 +7,7 @@ class Timer extends Component {
     super(props);
     this.state = {  
       second: '00',
-      min: '00',
-      hour: '00'
+      min: '00'
     }
   }
 
@@ -33,10 +32,6 @@ class Timer extends Component {
           <button className='btn' onClick={() => this.setPause()}>Pause</button>
         </div>
         <div className='screen row'>
-          <div className='screen-field column'>
-            <p className='time'>{this.state.hour}</p>
-            <p className='value'>hour</p>
-          </div>
           <div className='screen-field column'>
             <p className='time'>{this.state.min}</p>
             <p className='value'>minute</p>
