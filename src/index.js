@@ -18,6 +18,17 @@ class Timer extends Component {
 
       this.interval = setInterval( () => {
 
+        if (this.state.second === 60) {
+
+          this.setState((state) => ({
+            second: state.second = '00'
+          }));
+          
+          this.setState((state) => ({
+            min: Number(state.min) + 1
+          }));
+        }
+
         this.setState((state) => ({
           second: Number(state.second) + 1
         }));
