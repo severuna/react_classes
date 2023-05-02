@@ -7,20 +7,30 @@ class Timer extends Component {
     super(props);
     this.state = {  
       second: '00',
-      min: '00'
+      min: '00',
+      interval: null
     }
   }
 
-  setStart () {
-    this.setState((state) => ({
-      second: Number(state.second) + 1
-    }));
-  }
+  setStart (bool) {
 
-  setPause () {
-    this.setState((state) => ({
-      second: Number(state.second)
-    }));
+    if (bool === true) {
+
+      this.interval = setInterval( () => {
+
+        this.setState((state) => ({
+          second: Number(state.second) + 1
+        }));
+
+      }, 1000)
+
+    } else if (bool === false ) {
+
+      clearInterval(this.interval);
+      this.interval = null
+
+    }
+
   }
 
   render() {
@@ -28,8 +38,8 @@ class Timer extends Component {
       <div className='timer column'>
         <h1 className='title'>Homework 18. ReactJS. Классові компоненти. Стан та життєвий цикл</h1>
         <div className='btns row'>
-          <button className='btn' onClick={() => this.setStart()}>Start</button>
-          <button className='btn' onClick={() => this.setPause()}>Pause</button>
+          <button className='btn' onClick={() => this.setStart(true)}>Start</button>
+          <button className='btn' onClick={() => this.setStart(false)}>Pause</button>
         </div>
         <div className='screen row'>
           <div className='screen-field column'>
