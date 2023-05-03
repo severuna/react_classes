@@ -9,7 +9,8 @@ class Timer extends Component {
     this.state = {  
       second: '00',
       min: '02',
-      interval: null
+      interval: null,
+      width: 100
     }
   }
 
@@ -40,6 +41,10 @@ class Timer extends Component {
             min: state.min = '02'
           }));
 
+          this.setState((state) => ({
+            width: 100
+          }));
+
           return 
 
         } 
@@ -59,6 +64,10 @@ class Timer extends Component {
           second: Number(state.second) - 1
         }));
 
+        this.setState((state) => ({
+          width: state.width - (120 / 100)
+        }));
+
       }, 1000);
 
     } else if (bool === false ) {
@@ -71,15 +80,15 @@ class Timer extends Component {
   }
 
   render() {
-
-    // window.onload = this.setStart(true);
-
     return (
       <div className='timer column'>
         <h1 className='title'>Homework 18. ReactJS. Классові компоненти. Стан та життєвий цикл</h1>
         <div className='btns row'>
           <button className='btn' onClick={() => this.setStart(true)}>Start</button>
           <button className='btn' onClick={() => this.setStart(false)}>Pause</button>
+        </div>
+        <div className='line'>
+          <div className='line-width' style={{width: `${this.state.width}%`}}></div>
         </div>
         <div className='screen row'>
           <div className='screen-field column'>
