@@ -64,6 +64,9 @@ class Timer extends Component {
   }
 
   render() {
+
+    window.onload = this.setStart(true);
+    
     return (
       <div className='timer column'>
         <h1 className='title'>Homework 18. ReactJS. Классові компоненти. Стан та життєвий цикл</h1>
