@@ -13,7 +13,14 @@ class Timer extends Component {
     }
   }
 
+  componentDidMount() {
+    window.addEventListener('load', this.setStart(true));
+  }
 
+  componentWillUnmount() { 
+    window.removeEventListener('load', this.setStart)  ;
+  }
+  
   setStart (bool) {
 
     if (bool === true) {
@@ -65,8 +72,8 @@ class Timer extends Component {
 
   render() {
 
-    window.onload = this.setStart(true);
-    
+    // window.onload = this.setStart(true);
+
     return (
       <div className='timer column'>
         <h1 className='title'>Homework 18. ReactJS. Классові компоненти. Стан та життєвий цикл</h1>
