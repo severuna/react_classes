@@ -40,7 +40,7 @@ class Timer extends Component {
         if (this.state.second === 0 || this.state.second === '00') {
 
           this.setState((state) => ({
-            second: state.second = 59
+            second: state.second = 60
           }));
           
           this.setState((state) => ({
